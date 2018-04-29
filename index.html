@@ -79,6 +79,7 @@
   <div class="stackedit__right">
     <div class="stackedit__html">
       <h1 id="find-and-replace">Find and replace</h1>
+<hr>
 <h2 id="find-and-replace-any-match-anywhere-in-the-file">Find and replace any match anywhere in the file</h2>
 <pre><code>sed 's/'$find'/'$replace'/g'
 </code></pre>
@@ -142,6 +143,7 @@ sed 's/'$set'//g'
 <h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
 <pre><code>sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g'
 </code></pre>
+<hr>
 <h1 id="printing-lines-matching-patterns">Printing lines matching patterns</h1>
 <h2 id="print-the-line-matching-a-pattern">Print the line matching a pattern</h2>
 <pre><code>sed '/'$pattern'/!d' 

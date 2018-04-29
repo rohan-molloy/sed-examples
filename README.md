@@ -59,7 +59,6 @@
 
 	sed '/'$pattern'/{x;p;x;G;}'
 
-
 ## Join two lines if the first ends in a backslash
 
 	sed ':a; /\$/N; s/\\n//; ta'  
@@ -186,6 +185,3 @@
 
 
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTI4MzY1MTBdfQ==
--->

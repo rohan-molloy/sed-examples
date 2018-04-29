@@ -23,7 +23,7 @@
 <li><a href="#find-and-replace-outside-a-range-of-lines">Find and replace outside a range of lines</a></li>
 <li><a href="#find-and-replace-the-nth-instance-in-a-line">Find and replace the nth instance in a line</a></li>
 <li><a href="#find-and-replace-if-within-matching-start-and-end-pattern">Find and replace if within matching $start and $end pattern</a></li>
-<li><a href="#print-every-nth-line-starting-with-x">Print every nth line starting with x</a></li>
+<li><a href="#print-every-5th-line-starting-with-the-second">Print every 5th line starting with the second</a></li>
 <li><a href="#print-paragraphs-only-if-they-contain-pattern">Print paragraphs only if they contain pattern</a></li>
 </ul>
 </li>
@@ -35,10 +35,10 @@
 <li><a href="#remove-characters-in-set-from-lines">Remove characters in set from lines</a></li>
 <li><a href="#read-lines-from-bottom-to-top-tac">Read lines from bottom-to-top (tac)</a></li>
 <li><a href="#read-lines-from-right-to-left-rev">Read lines from right to left (rev)</a></li>
-<li><a href="#insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</a></li>
-<li><a href="#join-a-relative-and-absolute-path">Join a relative and absolute path</a></li>
 <li><a href="#remove-html-tags">Remove HTML tags</a></li>
 <li><a href="#sort-paragraphs-alphabetically">Sort paragraphs alphabetically</a></li>
+<li><a href="#insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</a></li>
+<li><a href="#join-a-relative-and-absolute-path">Join a relative and absolute path</a></li>
 </ul>
 </li>
 <li><a href="#printing-lines-matching-patterns">Printing lines matching patterns</a>
@@ -52,7 +52,6 @@
 <li><a href="#print-lines-matching-multiple-patterns-in-a-specific-order">Print lines matching multiple patterns in a specific order</a></li>
 <li><a href="#print-lines-matching-a-minimum-number-characters">Print lines matching a minimum number characters</a></li>
 <li><a href="#print-lines-matching-a-maximum-number-characters">Print lines matching a maximum number characters</a></li>
-<li><a href="#print-substring-of-a-line-after-matching-a-section">Print substring of a line after matching a section</a></li>
 </ul>
 </li>
 <li><a href="#deleting-lines-with-sed">Deleting lines with sed</a>
@@ -70,10 +69,6 @@
 <li><a href="#insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</a></li>
 <li><a href="#insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</a></li>
 <li><a href="#insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</a></li>
-</ul>
-</li>
-<li><a href="#uncategorized">Uncategorized</a>
-<ul>
 <li><a href="#number-lines---delimiting-with-tab">Number lines - delimiting with tab</a></li>
 </ul>
 </li>
@@ -108,8 +103,8 @@
 <h2 id="find-and-replace-if-within-matching-start-and-end-pattern">Find and replace if within matching $start and $end pattern</h2>
 <pre><code>sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
 </code></pre>
-<h2 id="print-every-nth-line-starting-with-x">Print every nth line starting with x</h2>
-<pre><code>sed -n '$n~$xp' 
+<h2 id="print-every-5th-line-starting-with-the-second">Print every 5th line starting with the second</h2>
+<pre><code>sed -n '2~5p' 
 </code></pre>
 <h2 id="print-paragraphs-only-if-they-contain-pattern">Print paragraphs only if they contain pattern</h2>
 <pre><code>sed '/./{H;$!d;};x;/'$pattern'/!d'
@@ -135,17 +130,17 @@ sed 's/'$set'//g'
 <pre><code>sed '/\n/!G;s/\(.\)\(.*\n\)/&amp;\
 /;//D;s/.//'
 </code></pre>
-<h2 id="insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</h2>
-<pre><code>sed '/'$pattern'/s@^.*$@'$before'&amp;'$after'@g'
-</code></pre>
-<h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
-<pre><code>sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g'
-</code></pre>
 <h2 id="remove-html-tags">Remove HTML tags</h2>
 <pre><code>sed -e :a -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba'
 </code></pre>
 <h2 id="sort-paragraphs-alphabetically">Sort paragraphs alphabetically</h2>
 <pre><code>(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
+</code></pre>
+<h2 id="insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</h2>
+<pre><code>sed '/'$pattern'/s@^.*$@'$before'&amp;'$after'@g'
+</code></pre>
+<h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
+<pre><code>sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g'
 </code></pre>
 <h1 id="printing-lines-matching-patterns">Printing lines matching patterns</h1>
 <h2 id="print-the-line-matching-a-pattern">Print the line matching a pattern</h2>
@@ -174,9 +169,6 @@ sed 's/'$set'//g'
 </code></pre>
 <h2 id="print-lines-matching-a-maximum-number-characters">Print lines matching a maximum number characters</h2>
 <pre><code>sed -n '/^.\{$n\}/!p' 
-</code></pre>
-<h2 id="print-substring-of-a-line-after-matching-a-section">Print substring of a line after matching a section</h2>
-<pre><code>sed -n -e 's/^.*'$word' //p' 
 </code></pre>
 <hr>
 <h1 id="deleting-lines-with-sed">Deleting lines with sed</h1>
@@ -219,7 +211,6 @@ sed 's/'$set'//g'
 <h2 id="insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</h2>
 <pre><code>sed '/'$pattern'/{x;p;x;G;}'
 </code></pre>
-<h1 id="uncategorized">Uncategorized</h1>
 <h2 id="number-lines---delimiting-with-tab">Number lines - delimiting with tab</h2>
 <pre><code>sed = \ | sed 'N;s/\n/\t/') 
 </code></pre>

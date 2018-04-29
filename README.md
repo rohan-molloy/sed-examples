@@ -63,82 +63,82 @@
 	set="[0-9]"
 	sed 's/'$set'//g' 
 
-## Read lines from bottom-to-top (tac)
+### Read lines from bottom-to-top (tac)
 
 	sed '1!G;h;$!d' 
 
-## Read lines from right to left (rev)
+### Read lines from right to left (rev)
 
     sed '/\n/!G;s/\(.\)\(.*\n\)/&\
     /;//D;s/.//'
 
-## Insert strings $before and $after to lines matching pattern
+### Insert strings $before and $after to lines matching pattern
 
     sed '/'$pattern'/s@^.*$@'$before'&'$after'@g'
 
-## Join a relative and absolute path
+### Join a relative and absolute path
 
     sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 
-## Remove HTML tags  
+### Remove HTML tags  
     sed -e :a -e 's/<[^>]*>//g;/</N;//ba'
 
-## Sort paragraphs alphabetically
+### Sort paragraphs alphabetically
 
 	(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
 
 
 
-# Printing lines matching patterns
+## Printing lines matching patterns
 
-## Print the line matching a pattern
+### Print the line matching a pattern
 
     sed '/'$pattern'/!d' 
 
-## Print the line immediately before pattern 
+### Print the line immediately before pattern 
 
     sed -n '/'$pattern'/{g;1!p;};h' 
 
-## Print the line immediately after pattern 
+### Print the line immediately after pattern 
 
     sed -n '/'$pattern'/{n;p;}' 
 
-## Print the line matching pattern and all subsequent lines
+### Print the line matching pattern and all subsequent lines
 
     sed '/'$pattern'/,$!d
 
-## Print lines matching a pattern and give context and position
+### Print lines matching a pattern and give context and position
 
     sed -n -e '/'$pattern'/{=;x;1!p;g;$!N;p;D;}'
 
-## Print lines matching multiple patterns in any order
+### Print lines matching multiple patterns in any order
 
 	sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' 
 
-## Print lines matching multiple patterns in a specific order  
+### Print lines matching multiple patterns in a specific order  
 
 	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
 
-## Print lines matching a minimum number characters
+### Print lines matching a minimum number characters
 
 	sed -n '/^.\{$n\}/p' 
 
-## Print lines matching a maximum number characters 
+### Print lines matching a maximum number characters 
 
     sed -n '/^.\{$n\}/!p' 
 
-## Print substring of a line after matching a section
+### Print substring of a line after matching a section
 	sed -n -e 's/^.*'$word' //p' 
 
 ---
 
-# Deleting lines with sed
+## Deleting lines with sed
 
-## Delete lines matching pattern
+### Delete lines matching pattern
 
     sed '/'$pattern'/d' 
 
-## Delete all blank lines
+### Delete all blank lines
 
     sed '/./!d' 
 
@@ -146,19 +146,19 @@
 
     sed "/^\s*$/d"
 
-## Delete all consecutive blank lines except for end
+### Delete all consecutive blank lines except for end
 
     sed '/./,/^$/!d' 
 
-## Delete all consecutive blank lines except start
+### Delete all consecutive blank lines except start
 
     sed '/^$/N;/\n$/D' 
 
-## Delete all consecutive blank lines except for the first two
+#### Delete all consecutive blank lines except for the first two
 
     sed '/^$/N;/\n$/N;//D' 
 
-## Delete all leading blank lines
+### Delete all leading blank lines
 
     sed '/./,$!d' 
 
@@ -166,29 +166,29 @@
 
     sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba' 
 
-## Delete every nth line after $start 
+### Delete every nth line after $start 
  
     sed '"$start"~"$nth"d' 
 
-## Delete the last line of each paragraph
+### Delete the last line of each paragraph
 
     sed-n '/^$/{p;h;};/./{x;/./p;}'
 
-## Insert blank line below lines that match pattern
+### Insert blank line below lines that match pattern
 
 	sed '/'$pattern'/G' 
 
-## Insert blank line above lines that match pattern
+### Insert blank line above lines that match pattern
 
 	sed '/'$pattern'/{x;p;x;}'
 
-## Insert blank line above and below matching lines
+### Insert blank line above and below matching lines
 
 	sed '/'$pattern'/{x;p;x;G;}'
 
-# Uncategorized 
+## Uncategorized 
 
-## Number lines - delimiting with tab
+### Number lines - delimiting with tab
 
     sed = \ | sed 'N;s/\n/\t/') 
 
@@ -196,5 +196,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNjEwMzIxOSwxNDI2MzkzMjE3XX0=
+eyJoaXN0b3J5IjpbMTY3NjAwMzQwNSwxNDI2MzkzMjE3XX0=
 -->

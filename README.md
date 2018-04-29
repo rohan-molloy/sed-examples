@@ -1,6 +1,6 @@
-# 
+# Sed examples
 
-# Find and replace
+---# Find and replace
 ## Find and replace any match anywhere in the file
 
 	sed 's/'$find'/'$replace'/g'
@@ -98,7 +98,7 @@
 
     sed = \ | sed 'N;s/\n/\t/') 
 
-# Printing lines matching patterns
+---# Printing lines matching a patte
 
 ## Print the line matching a pattern
 
@@ -184,5 +184,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MTU0Mzc1N119
+eyJoaXN0b3J5IjpbLTE5MDY3NTk5MjJdfQ==
 -->

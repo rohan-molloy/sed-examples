@@ -38,9 +38,7 @@
 ## Print paragraphs only if they contain pattern
 
 	sed '/./{H;$!d;};x;/'$pattern'/!d'
-
 # Translations
-
 ## Comment lines from $start to $end
 
     sed "$start,$end {s/^/#/}"  
@@ -188,6 +186,3 @@
 
 
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NDM3NzU0Ml19
--->

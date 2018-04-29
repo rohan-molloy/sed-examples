@@ -131,6 +131,14 @@
 
     sed -n '/^.\{$n\}/!p' 
 
+## Print every nth line starting with x
+
+	sed -n '$n~$xp' 
+	
+## Print paragraphs only if they contain pattern
+
+	sed '/./{H;$!d;};x;/'$pattern'/!d'
+
 ---# Deleting lines with sed
 
 ## Delete lines matching pattern
@@ -179,5 +187,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNTc0MzI3M119
+eyJoaXN0b3J5IjpbLTEyMDMwMzg4NzldfQ==
 -->

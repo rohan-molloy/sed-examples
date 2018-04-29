@@ -95,6 +95,12 @@
 ## Join a relative and absolute path
 
     sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
+    
+## Number lines - delimiting with tab
+
+    sed = \ | sed 'N;s/\n/\t/') 
+
+
 
 # Printing lines matching patterns
 
@@ -183,5 +189,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxOTAyOTY1XX0=
+eyJoaXN0b3J5IjpbMTU5NDM3NzU0Ml19
 -->

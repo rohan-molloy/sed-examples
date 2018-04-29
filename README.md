@@ -1,5 +1,4 @@
 # Find and replace
----
 ## Find and replace any match anywhere in the file
 
 	sed 's/'$find'/'$replace'/g'
@@ -84,7 +83,6 @@
 ## Join a relative and absolute path
 
     sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
----
 
 # Printing lines matching patterns
 
@@ -123,7 +121,6 @@
 ## Print lines matching a maximum number characters 
 
     sed -n '/^.\{$n\}/!p' 
----
 
 # Deleting lines with sed
 
@@ -188,6 +185,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDUyMjAwMTY5LDE0MjYzOTMyMTcsMTY3Nj
+eyJoaXN0b3J5IjpbODYyOTQ4NTk4LDE0MjYzOTMyMTcsMTY3Nj
 AwMzQwNSwxNDI2MzkzMjE3XX0=
 -->

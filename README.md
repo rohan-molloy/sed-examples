@@ -38,7 +38,7 @@
 ## Print paragraphs only if they contain pattern
 
 	sed '/./{H;$!d;};x;/'$pattern'/!d'
-# Translations
+---# Translations
 ## Comment lines from $start to $end
 
     sed "$start,$end {s/^/#/}"  
@@ -50,11 +50,10 @@
 ## Insert blank line below lines that match pattern
 
 	sed '/'$pattern'/G' 
-
+	
 ## Insert blank line above lines that match pattern
 
 	sed '/'$pattern'/{x;p;x;}'
-
 ## Insert blank line above and below matching lines
 
 	sed '/'$pattern'/{x;p;x;G;}'
@@ -97,8 +96,6 @@
 
     sed = \ | sed 'N;s/\n/\t/') 
 
-
-
 # Printing lines matching patterns
 
 ## Print the line matching a pattern
@@ -136,9 +133,8 @@
 ## Print lines matching a maximum number characters 
 
     sed -n '/^.\{$n\}/!p' 
-
+---
 # Deleting lines with sed
-
 
 ## Delete lines matching pattern
 
@@ -185,3 +181,6 @@
 
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyODk0MDgwNzhdfQ==
+-->

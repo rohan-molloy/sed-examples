@@ -49,6 +49,18 @@
 
     sed -r "s/\<'$pattern'[a-z]+/\U&/g"   
 
+## Insert blank line below lines that match pattern
+
+	sed '/'$pattern'/G' 
+
+## Insert blank line above lines that match pattern
+
+	sed '/'$pattern'/{x;p;x;}'
+
+## Insert blank line above and below matching lines
+
+	sed '/'$pattern'/{x;p;x;G;}'
+
 
 ## Join two lines if the first ends in a backslash
 
@@ -165,26 +177,11 @@
 
     sed-n '/^$/{p;h;};/./{x;/./p;}'
 
-## Insert blank line below lines that match pattern
 
-	sed '/'$pattern'/G' 
-
-## Insert blank line above lines that match pattern
-
-	sed '/'$pattern'/{x;p;x;}'
-
-## Insert blank line above and below matching lines
-
-	sed '/'$pattern'/{x;p;x;G;}'
-
-
-## Number lines - delimiting with tab
-
-    sed = \ | sed 'N;s/\n/\t/') 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDU1NDQ0NzZdfQ==
+eyJoaXN0b3J5IjpbMTAxOTAyOTY1XX0=
 -->

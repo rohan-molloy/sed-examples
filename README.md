@@ -206,3 +206,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed = \ | sed 'N;s/\n/\t/') 
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2OTk3NTE0NDVdfQ==
+-->

@@ -1,7 +1,5 @@
-
 # Find and replace
-
-
+---
 ## Find and replace any match anywhere in the file
 
 	sed 's/'$find'/'$replace'/g'
@@ -86,8 +84,7 @@
 ## Join a relative and absolute path
 
     sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
-
-
+---
 
 # Printing lines matching patterns
 
@@ -191,6 +188,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzgwNjUxOTUsMTQyNjM5MzIxNywxNj
-c2MDAzNDA1LDE0MjYzOTMyMTddfQ==
+eyJoaXN0b3J5IjpbNDUyMjAwMTY5LDE0MjYzOTMyMTcsMTY3Nj
+AwMzQwNSwxNDI2MzkzMjE3XX0=
 -->

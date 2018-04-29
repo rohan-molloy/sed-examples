@@ -124,6 +124,7 @@
 
 # Deleting lines with sed
 
+
 ## Delete lines matching pattern
 
     sed '/'$pattern'/d' 
@@ -184,6 +185,3 @@
 
 
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbODYyOTQ4NTk4XX0=
--->

@@ -34,9 +34,9 @@
 
     sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
 
-## Print every nth line starting with x
+## Print every 5th line starting with the second
 
-	sed -n '$n~$xp' 
+	sed -n '2~5p' 
 	
 ## Print paragraphs only if they contain pattern
 
@@ -71,6 +71,14 @@
     sed '/\n/!G;s/\(.\)\(.*\n\)/&\
     /;//D;s/.//'
 
+## Remove HTML tags  
+    sed -e :a -e 's/<[^>]*>//g;/</N;//ba'
+
+## Sort paragraphs alphabetically
+
+	(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
+
+
 ## Insert strings $before and $after to lines matching pattern
 
     sed '/'$pattern'/s@^.*$@'$before'&'$after'@g'
@@ -78,13 +86,6 @@
 ## Join a relative and absolute path
 
     sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
-
-## Remove HTML tags  
-    sed -e :a -e 's/<[^>]*>//g;/</N;//ba'
-
-## Sort paragraphs alphabetically
-
-	(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
 
 
 
@@ -125,10 +126,6 @@
 ## Print lines matching a maximum number characters 
 
     sed -n '/^.\{$n\}/!p' 
-
-## Print substring of a line after matching a section
-	sed -n -e 's/^.*'$word' //p' 
-
 ---
 
 # Deleting lines with sed
@@ -185,7 +182,6 @@
 
 	sed '/'$pattern'/{x;p;x;G;}'
 
-# Uncategorized 
 
 ## Number lines - delimiting with tab
 
@@ -195,6 +191,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNjM5MzIxNywxNjc2MDAzNDA1LDE0Mj
-YzOTMyMTddfQ==
+eyJoaXN0b3J5IjpbLTEwNzgwNjUxOTUsMTQyNjM5MzIxNywxNj
+c2MDAzNDA1LDE0MjYzOTMyMTddfQ==
 -->

@@ -1,63 +1,64 @@
+# Sed Examples
 
-# Find and replace
+## Find and replace
 
 
-## Find and replace any match anywhere in the file
+### Find and replace any match anywhere in the file
 
 	sed 's/'$find'/'$replace'/g'
 
-## Find and replace on lines containing pattern
+### Find and replace on lines containing pattern
 
 	sed '/'$pattern'/'$find'/'$replace'/g'
 
-## Find and replace the first match 
+### Find and replace the first match 
 
     sed 's/'$find'/'$replace'/'
 
-## Find and replace only on the last match
+### Find and replace only on the last match
 
 	sed 's/\(.*\)'$find'/'$replace'/'
 
-## Find and replace inside a range of lines
+### Find and replace inside a range of lines
 
 	sed '$range s/'$find'/'$replace'/g' 
 
-## Find and replace outside a range of lines 
+### Find and replace outside a range of lines 
 
 	sed '$range !s/'$find'/'$replace'/g' 
 
-## Find and replace the nth instance in a line
+### Find and replace the nth instance in a line
 
 	sed 's/'$find'/'$replace'/$nth_instance''
 
-## Find and replace if within matching $start and $end pattern 
+### Find and replace if within matching $start and $end pattern 
 
     sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
 
-## Print every nth line starting with x
+### Print every nth line starting with x
 
 	sed -n '$n~$xp' 
 	
-## Print paragraphs only if they contain pattern
+### Print paragraphs only if they contain pattern
 
 	sed '/./{H;$!d;};x;/'$pattern'/!d'
 
-# Translations
+## Translations
 
-## Comment lines from $start to $end
+### Comment lines from $start to $end
 
     sed "$start,$end {s/^/#/}"  
 
-## Change word to uppercase uppercase if matching pattern
+### Change word to uppercase uppercase if matching pattern
 
     sed -r "s/\<'$pattern'[a-z]+/\U&/g"   
 
 
-## Join two lines if the first ends in a backslash
+### Join two lines if the first ends in a backslash
 
 	sed ':a; /\$/N; s/\\n//; ta'  
 
-## Remove characters in set from lines
+### Remove characters in set from lines
 
 	set="[0-9]"
 	sed 's/'$set'//g' 
@@ -195,5 +196,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNjM5MzIxN119
+eyJoaXN0b3J5IjpbMTgxNjEwMzIxOSwxNDI2MzkzMjE3XX0=
 -->

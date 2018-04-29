@@ -133,7 +133,7 @@
 
 ## Print every nth line starting with x
 
-	sed -n '$n~$xp' 
+	sed -n "$n~$x"p
 	
 ## Print paragraphs only if they contain pattern
 
@@ -187,5 +187,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDMwMzg4NzldfQ==
+eyJoaXN0b3J5IjpbMTc3MjQ5Nzg5N119
 -->

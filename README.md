@@ -33,13 +33,8 @@
 
     sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
 
-## Print every 5th line starting with the second
 
-	sed -n '2~5p' 
-	
-## Print paragraphs only if they contain pattern
 
-	sed '/./{H;$!d;};x;/'$pattern'/!d'
 ---# Translations
 ## Comment lines from $start to $end
 
@@ -98,9 +93,9 @@
 
     sed = \ | sed 'N;s/\n/\t/') 
 
----# Printing lines matching a patte
+---# Printing lines matching a pattern
 
-## Print the line matching a pattern
+## Print lines based on pattern
 
     sed '/'$pattern'/!d' 
 
@@ -135,8 +130,8 @@
 ## Print lines matching a maximum number characters 
 
     sed -n '/^.\{$n\}/!p' 
----
-# Deleting lines with sed
+
+---# Deleting lines with sed
 
 ## Delete lines matching pattern
 
@@ -184,5 +179,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDY3NTk5MjJdfQ==
+eyJoaXN0b3J5IjpbMTkyNTc0MzI3M119
 -->

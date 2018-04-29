@@ -31,6 +31,9 @@
 <ul>
 <li><a href="#comment-lines-from-start-to-end">Comment lines from $start to $end</a></li>
 <li><a href="#change-word-to-uppercase-uppercase-if-matching-pattern">Change word to uppercase uppercase if matching pattern</a></li>
+<li><a href="#insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</a></li>
+<li><a href="#insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</a></li>
+<li><a href="#insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</a></li>
 <li><a href="#join-two-lines-if-the-first-ends-in-a-backslash">Join two lines if the first ends in a backslash</a></li>
 <li><a href="#remove-characters-in-set-from-lines">Remove characters in set from lines</a></li>
 <li><a href="#read-lines-from-bottom-to-top-tac">Read lines from bottom-to-top (tac)</a></li>
@@ -39,6 +42,7 @@
 <li><a href="#sort-paragraphs-alphabetically">Sort paragraphs alphabetically</a></li>
 <li><a href="#insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</a></li>
 <li><a href="#join-a-relative-and-absolute-path">Join a relative and absolute path</a></li>
+<li><a href="#number-lines---delimiting-with-tab">Number lines - delimiting with tab</a></li>
 </ul>
 </li>
 <li><a href="#printing-lines-matching-patterns">Printing lines matching patterns</a>
@@ -66,10 +70,6 @@
 <li><a href="#delete-all-trailing-blank-lines">Delete all trailing blank lines</a></li>
 <li><a href="#delete-every-nth-line-after-start">Delete every nth line after $start</a></li>
 <li><a href="#delete-the-last-line-of-each-paragraph">Delete the last line of each paragraph</a></li>
-<li><a href="#insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</a></li>
-<li><a href="#insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</a></li>
-<li><a href="#insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</a></li>
-<li><a href="#number-lines---delimiting-with-tab">Number lines - delimiting with tab</a></li>
 </ul>
 </li>
 </ul>
@@ -116,6 +116,15 @@
 <h2 id="change-word-to-uppercase-uppercase-if-matching-pattern">Change word to uppercase uppercase if matching pattern</h2>
 <pre><code>sed -r "s/\&lt;'$pattern'[a-z]+/\U&amp;/g"   
 </code></pre>
+<h2 id="insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</h2>
+<pre><code>sed '/'$pattern'/G' 
+</code></pre>
+<h2 id="insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</h2>
+<pre><code>sed '/'$pattern'/{x;p;x;}'
+</code></pre>
+<h2 id="insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</h2>
+<pre><code>sed '/'$pattern'/{x;p;x;G;}'
+</code></pre>
 <h2 id="join-two-lines-if-the-first-ends-in-a-backslash">Join two lines if the first ends in a backslash</h2>
 <pre><code>sed ':a; /\$/N; s/\\n//; ta'  
 </code></pre>
@@ -141,6 +150,9 @@ sed 's/'$set'//g'
 </code></pre>
 <h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
 <pre><code>sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g'
+</code></pre>
+<h2 id="number-lines---delimiting-with-tab">Number lines - delimiting with tab</h2>
+<pre><code>sed = \ | sed 'N;s/\n/\t/') 
 </code></pre>
 <h1 id="printing-lines-matching-patterns">Printing lines matching patterns</h1>
 <h2 id="print-the-line-matching-a-pattern">Print the line matching a pattern</h2>
@@ -200,18 +212,6 @@ sed 's/'$set'//g'
 </code></pre>
 <h2 id="delete-the-last-line-of-each-paragraph">Delete the last line of each paragraph</h2>
 <pre><code>sed-n '/^$/{p;h;};/./{x;/./p;}'
-</code></pre>
-<h2 id="insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</h2>
-<pre><code>sed '/'$pattern'/G' 
-</code></pre>
-<h2 id="insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</h2>
-<pre><code>sed '/'$pattern'/{x;p;x;}'
-</code></pre>
-<h2 id="insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</h2>
-<pre><code>sed '/'$pattern'/{x;p;x;G;}'
-</code></pre>
-<h2 id="number-lines---delimiting-with-tab">Number lines - delimiting with tab</h2>
-<pre><code>sed = \ | sed 'N;s/\n/\t/') 
 </code></pre>
 
     </div>

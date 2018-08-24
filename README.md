@@ -136,7 +136,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 # Paragraphing
 
 ## Sort paragraphs alphabetically
-
+	sort_paragraphs_alphabetically()P
 	(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
 
 ## Print paragraphs only if they contain pattern
@@ -223,6 +223,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk0MDgxNzE0LC0xNDczMTY0MTEzLC0xMD
-EyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbLTY3MjY1MDcxMyw1OTQwODE3MTQsLTE0Nz
+MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

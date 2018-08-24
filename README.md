@@ -112,15 +112,15 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed 's/^#//g' 
 
-## Change word to uppercase uppercase if matching pattern
+## Change word to uppercase if matching pattern
 
-	change_word_matching
-	sed -r "s/\<'$pattern'[a-z]+/\U&/g"   
-
+	change_word_matching_pattern_to_uppercase(){
+	sed -r "s/\<'$pattern'[a-z]+/\U&/g" $@   
+	}
 ## Join two lines if the first ends in a backslash
-
-	sed ':a; /\$/N; s/\\n//; ta'  
-
+	join_two_lines_backslash(){
+	sed ':a; /\$/N; s/\\n//; ta'  $@
+	}
 ## Remove characters in set from lines
 
 	set="[0-9]"
@@ -222,6 +222,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNDQ4MDExMiwtMTQ3MzE2NDExMywtMT
-AxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTE0NDQ4NDk0MjIsLTE0NzMxNjQxMTMsLT
+EwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

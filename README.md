@@ -104,7 +104,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	uncomment_lines_matching_pattern(){
 	sed '/'$pattern'/s/^/#/g'
 	}
-## Uncomment lines matching pattern 
+## Uncomment a
 
 	sed '/'$pattern'/s/^#//g' 
 
@@ -217,6 +217,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA2NzMxNzUxLC0xNDczMTY0MTEzLC0xMD
-EyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbMTE1OTQ4MjI2MiwtMTQ3MzE2NDExMywtMT
+AxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

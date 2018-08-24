@@ -61,15 +61,15 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/,$!d' $@
 	}
 ## Print lines matching a pattern and give context and position
-	print_line_matching_pattern_with_co
+	print_line_matching_pattern_with_context(){
 	sed -n -e '/'$pattern'/{=;x;1!p;g;$!N;p;D;}'
-
+	}
 ## Print lines matching multiple patterns in any order
-
-	sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' 
-
+	print_lines_matching_patterns_in_any_order(){
+	sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' $@
+	}
 ## Print lines matching multiple patterns in a specific order
-
+	print_lines_
 	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
 
 ## Print lines matching a minimum number characters
@@ -211,6 +211,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTEyMDU3OTMsLTE2OTk3NTE0NDVdfQ
-==
+eyJoaXN0b3J5IjpbMTAzMTgwOTE0MywtMTY5OTc1MTQ0NV19
 -->

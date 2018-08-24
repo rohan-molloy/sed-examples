@@ -106,7 +106,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Uncomment all lines
 
-	sed '/'$pattern'/s/^#//g' 
+	sed 's/^#//g' 
 
 ## Change word to uppercase uppercase if matching pattern
 
@@ -217,6 +217,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNTQyODIxMywtMTQ3MzE2NDExMywtMT
+eyJoaXN0b3J5IjpbMTkzNTM2NjE3NywtMTQ3MzE2NDExMywtMT
 AxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

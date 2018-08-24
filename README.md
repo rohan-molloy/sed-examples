@@ -39,19 +39,19 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed 's/'$find'/'$replace'/'$nth_instance'' $@
 	}
 ## Find and replace if within matching $start and $end pattern
-	find_and_replace_within_st
+	find_and_replace_within_start_end(){
 	sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' $@
-	
+	}
 # Printing lines based on pattern
 
 ## Print the line matching a pattern
-
-	sed '/'$pattern'/!d' 
-
+	print_line_matching_pattern(){
+	sed '/'$pattern'/!d' $@
+	}
 ## Print the line immediately before pattern
-
-	sed -n '/'$pattern'/{g;1!p;};h' 
-
+	print_line_before_pattern() {
+	sed -n '/'$pattern'/{g;1!p;};h' $@ 
+	}
 ## Print the line immediately after pattern
 
 	sed -n '/'$pattern'/{n;p;}' 
@@ -211,5 +211,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MDk0MDkzNCwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTIyNDk2MDA3NiwtMTY5OTc1MTQ0NV19
 -->

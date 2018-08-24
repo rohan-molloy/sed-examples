@@ -109,9 +109,9 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/s/^/#/g'
 	}
 ## Uncomment all lines
-	uncomment_all
+	uncomment_all_lines(){
 	sed 's/^#//g' 
-
+	}
 ## Change word to uppercase if matching pattern
 
 	change_word_matching_pattern_to_uppercase(){
@@ -223,6 +223,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDk2MzAwNTUsLTE0NzMxNjQxMTMsLT
-EwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbNTk0MDgxNzE0LC0xNDczMTY0MTEzLC0xMD
+EyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
 -->

@@ -17,29 +17,30 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/'$find'/'$replace'/g' $@
 	}
 ## Find and replace the first match
-
+	find_and_replace_first_match(){
 	sed 's/'$find'/'$replace'/'
-
+	}
 ## Find and replace only on the last match
-
-	sed 's/\(.*\)'$find'/'$replace'/'
-
+	find_and_replace_last_match() {
+	sed 's/\(.*\)'$find'/'$replace'/' $@
+	}
 ## Find and replace inside a range of lines
 	find_and_replace_inside_range() {
 	sed '$range s/'$find'/'$replace'/g' $@
 	} 
 
 ## Find and replace outside a range of lines
-
+	find_and_replace_outside_range(){
 	sed '$range !s/'$find'/'$replace'/g' $@
+	}
 
 ## Find and replace the nth instance in a line
-	find_and_replac
+	find_and_replace_nth_instance(){
 	sed 's/'$find'/'$replace'/'$nth_instance'' $@
-
+	}
 ## Find and replace if within matching $start and $end pattern
-
-	sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
+	find_and_replace_within_st
+	sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' $@
 	
 # Printing lines based on pattern
 
@@ -210,5 +211,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxMDQ1MDc0NiwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTg1MDk0MDkzNCwtMTY5OTc1MTQ0NV19
 -->

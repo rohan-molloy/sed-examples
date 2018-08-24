@@ -57,7 +57,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed -n '/'$pattern'/{n;p;}' 
 	}
 ## Print the line matching pattern and all subsequent lines
-	print_line
+	print_line_matching_p
 	sed '/'$pattern'/,$!d
 
 ## Print lines matching a pattern and give context and position
@@ -211,5 +211,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMTc5NDQ3MSwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTEwNjc3ODQ3NTIsLTE2OTk3NTE0NDVdfQ
+==
 -->

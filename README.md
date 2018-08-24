@@ -20,7 +20,7 @@ Note that the arguments for these functions are additional arguments passed to s
 	}
 ## Find and replace the first match
 	find_and_replace_first_match(){
-	sed 's/'$find'/'$replace'/'
+	sed 's/'$find'/'$replace'/' $@
 	}
 ## Find and replace only on the last match
 	find_and_replace_last_match() {
@@ -184,12 +184,14 @@ Note that the arguments for these functions are additional arguments passed to s
 	sed "/^\s*$/d" $@
 	}
 ## Delete all consecutive blank lines except for end
-
-	sed '/./,/^$/!d' 
+	delete_all_consecutive_blank_lines_except_end(){
+	sed '/./,/^$/!d' $@
+	}
 
 ## Delete all consecutive blank lines except start
-
-	sed '/^$/N;/\n$/D' 
+	delete_all_consecutive_blank_lines_except_start(){
+	sed '/^$/N;/\n$/D' $@
+	}
 
 ## Delete all consecutive blank lines except for the first two
 
@@ -229,6 +231,6 @@ Note that the arguments for these functions are additional arguments passed to s
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0OTcyMDQyNiw1OTQwODE3MTQsLTE0Nz
+eyJoaXN0b3J5IjpbLTc3NTIyMTA5OSw1OTQwODE3MTQsLTE0Nz
 MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

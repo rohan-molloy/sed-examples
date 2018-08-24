@@ -3,7 +3,7 @@
 
 A collection based mostly on stackexchange posts along with a few I threw together myself. Later, I will have a `.bashrc` file that contains a collection of regex patterns.
 
-Note that the arguments for these functions are additional arguments passed to sed. Variables like `$find` and `$replace` must be pre-defined.
+Note that the arguments for these functions are additional arguments passed to sed. Variables like `$pattern` `$find` `$replace` must be pre-defined.
 
 
 # Find and replace
@@ -148,17 +148,18 @@ Note that the arguments for these functions are additional arguments passed to s
 	}
 
 ## Insert blank line below lines that match pattern
-
+	insert_linebreak_below_matching_lines()
 	sed '/'$pattern'/G' 
 
 ## Insert blank line above lines that match pattern
-	
-	sed '/'$pattern'/{x;p;x;}'
+	insert_linebreak_above_matching_lines(){
+	sed '/'$pattern'/{x;p;x;}' $@
+	}
 
 ## Insert blank line above and below matching lines
-	insert_blank_line_b
-	sed '/'$pattern'/{x;p;x;G;}'
-
+	insert_linebreak_between_matching_lines(){
+	sed '/'$pattern'/{x;p;x;G;}' $@
+	}
 ## Delete the last line of each paragraph
 	delete_last_line_of_each_paragraph(){
 	sed -n '/^$/{p;h;};/./{x;/./p;}' $@
@@ -227,6 +228,6 @@ Note that the arguments for these functions are additional arguments passed to s
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NDg0NjUzLDU5NDA4MTcxNCwtMTQ3Mz
-E2NDExMywtMTAxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbMTI0OTg1NDg3Nyw1OTQwODE3MTQsLTE0Nz
+MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

@@ -82,8 +82,10 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Print remainder of a line after matching substring
 
-	print_remainder_of_line_after_ma
-	sed -n -e 's/^.*'$word' //p' 
+	print_remainder_of_line_after_matching_pattern(){
+	sed -n -e 's/^.*'$pattern' //p' $@
+	}
+## Print word immediately after matching pattern
 
 # Translation/Refactoring
 
@@ -212,6 +214,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMTc0MzY2LC0xMDEyMTc4NTU1LC0xNj
-k5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbOTk1MTc0MSwtMTAxMjE3ODU1NSwtMTY5OT
+c1MTQ0NV19
 -->

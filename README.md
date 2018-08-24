@@ -9,13 +9,13 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 ## Find and replace any match anywhere in the file
 
 	find_and_replace(){
-		sed 's/'$find'/'$replace'/g' $@
+	sed 's/'$find'/'$replace'/g' $@
 	}
 
 ## Find and replace on lines containing pattern
-	find_and_replace_on_lines
-	sed '/'$pattern'/'$find'/'$replace'/g'
-
+	find_and_replace_on_lines() {
+	sed '/'$pattern'/'$find'/'$replace'/g' $@
+	}
 ## Find and replace the first match
 
 	sed 's/'$find'/'$replace'/'
@@ -25,16 +25,17 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed 's/\(.*\)'$find'/'$replace'/'
 
 ## Find and replace inside a range of lines
-
-	sed '$range s/'$find'/'$replace'/g' 
+	find_and_replace_inside_range() {
+	sed '$range s/'$find'/'$replace'/g' $@
+	} 
 
 ## Find and replace outside a range of lines
 
-	sed '$range !s/'$find'/'$replace'/g' 
+	sed '$range !s/'$find'/'$replace'/g' $@
 
 ## Find and replace the nth instance in a line
-
-	sed 's/'$find'/'$replace'/$nth_instance''
+	find_and_replac
+	sed 's/'$find'/'$replace'/'$nth_instance'' $@
 
 ## Find and replace if within matching $start and $end pattern
 
@@ -209,5 +210,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTU1MDU2Mjk3LC0xNjk5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbMTQxMDQ1MDc0NiwtMTY5OTc1MTQ0NV19
 -->

@@ -57,11 +57,11 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed -n '/'$pattern'/{n;p;}' 
 	}
 ## Print the line matching pattern and all subsequent lines
-	print_line_matching_p
-	sed '/'$pattern'/,$!d
-
+	print_line_matching_pattern_and_all_subsequent(){
+	sed '/'$pattern'/,$!d' $@
+	}
 ## Print lines matching a pattern and give context and position
-
+	print_line_matching_pattern_with_co
 	sed -n -e '/'$pattern'/{=;x;1!p;g;$!N;p;D;}'
 
 ## Print lines matching multiple patterns in any order
@@ -211,6 +211,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjc3ODQ3NTIsLTE2OTk3NTE0NDVdfQ
+eyJoaXN0b3J5IjpbLTExMTEyMDU3OTMsLTE2OTk3NTE0NDVdfQ
 ==
 -->

@@ -136,19 +136,21 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 # Paragraphing
 
 ## Sort paragraphs alphabetically
-	sort_paragraphs_alphabetically()P
+	sort_paragraphs_alphabetically(){
 	(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
+	}
 
 ## Print paragraphs only if they contain pattern
-
-	sed '/./{H;$!d;};x;/'$pattern'/!d'
+	print_paragraph_containing_pattern(){
+	sed '/./{H;$!d;};x;/'$pattern'/!d' $@
+	}
 
 ## Insert blank line below lines that match pattern
 
 	sed '/'$pattern'/G' 
 
 ## Insert blank line above lines that match pattern
-
+	
 	sed '/'$pattern'/{x;p;x;}'
 
 ## Insert blank line above and below matching lines
@@ -156,9 +158,9 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/{x;p;x;G;}'
 
 ## Delete the last line of each paragraph
-
-	sed-n '/^$/{p;h;};/./{x;/./p;}'
-
+	delete_last_line_of_each_paragraph(){
+	sed -n '/^$/{p;h;};/./{x;/./p;}' $@
+	}
 ## Print every nth line starting with x
 
 	sed -n '$n~$xp' 
@@ -166,7 +168,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 # Deleting lines 
 
 ## Delete lines matching pattern
-
+	
 	sed '/'$pattern'/d' 
 
 ## Delete all blank lines
@@ -223,6 +225,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MjY1MDcxMyw1OTQwODE3MTQsLTE0Nz
-MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbODg4OTE0MjkzLDU5NDA4MTcxNCwtMTQ3Mz
+E2NDExMywtMTAxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

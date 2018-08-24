@@ -69,16 +69,16 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' $@
 	}
 ## Print lines matching multiple patterns in a specific order
-	print_lines_
+	print_lines_matching_patterns_in_specific_order(){
 	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
-
+	}
 ## Print lines matching a minimum number characters
-
-	sed -n '/^.\{$n\}/p' 
-
+	print_lines_matching_min_characters(){
+	sed -n '/^.\{$nchars\}/p' $@
+	}
 ## Print lines matching a maximum number characters
 
-	sed -n '/^.\{$n\}/!p' 
+	sed -n '/^.\{$nchars\}/!p' $@
 
 ## Print substring of a line after matching a section
 
@@ -211,5 +211,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMTgwOTE0MywtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbMTQxNDAxOTk5MSwtMTY5OTc1MTQ0NV19
 -->

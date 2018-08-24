@@ -80,13 +80,13 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	print_lines_max_nchars(){
 	sed -n '/^.\{$nchars\}/!p' $@
 	}
-## Print the re after matching pattern
+## Print the remainder of line after matching pattern
 
-	print_e_substring_after_matching_pattern(){
+	print_substring_after_matching_pattern(){
 	sed -n -e 's/^.*'$pattern' //p' $@
 	}
-## Print word immediately after matching pattern
-	print_
+## Print the word after matching pattern
+	print_word_after_
 # Translation/Refactoring
 
 ## Comment lines from $start to $end
@@ -214,6 +214,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg0NzE2MjQwLC0xMDEyMTc4NTU1LC0xNj
-k5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbMjAzNzM3NzgyNCwtMTAxMjE3ODU1NSwtMT
+Y5OTc1MTQ0NV19
 -->

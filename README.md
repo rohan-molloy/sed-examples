@@ -8,10 +8,12 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 ## Find and replace any match anywhere in the file
 
-	sed 's/'$find'/'$replace'/g'
+	find_and_replace(){
+		sed 's/'$find'/'$replace'/g' $@
+	}
 
 ## Find and replace on lines containing pattern
-
+	find_and_replace_on_lines
 	sed '/'$pattern'/'$find'/'$replace'/g'
 
 ## Find and replace the first match
@@ -207,5 +209,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbNTU1MDU2Mjk3LC0xNjk5NzUxNDQ1XX0=
 -->

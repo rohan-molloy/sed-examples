@@ -1,7 +1,9 @@
 
 # Sed examples
 
-A collection based mostly on stackexchange posts along with a few I threw together myself. Later, I will have a `.bashrc` file that contains a collection of regex patterns 
+A collection based mostly on stackexchange posts along with a few I threw together myself. Later, I will have a `.bashrc` file that contains a collection of regex patterns.
+
+Note that the arguments for these functions are additional arguments passed to sed. Variables like `$find` and `$replace` must be pre-defined.
 
 
 # Find and replace
@@ -106,11 +108,11 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Uncomment lines matching pattern 
 	uncomment_lines_matching_pattern(){
-	sed '/'$pattern'/s/^/#/g'
+	sed '/'$pattern'/s/^/#/g' $@
 	}
 ## Uncomment all lines
 	uncomment_all_lines(){
-	sed 's/^#//g' 
+	sed 's/^#//g'  $@
 	}
 ## Change word to uppercase if matching pattern
 
@@ -154,7 +156,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/{x;p;x;}'
 
 ## Insert blank line above and below matching lines
-
+	insert_blank_line_b
 	sed '/'$pattern'/{x;p;x;G;}'
 
 ## Delete the last line of each paragraph
@@ -225,6 +227,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg4OTE0MjkzLDU5NDA4MTcxNCwtMTQ3Mz
+eyJoaXN0b3J5IjpbMTI1NDg0NjUzLDU5NDA4MTcxNCwtMTQ3Mz
 E2NDExMywtMTAxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

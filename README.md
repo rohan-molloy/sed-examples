@@ -91,6 +91,10 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 # Translation/Refactoring
 
+## Comment all lines
+	comment_all_lines(){
+	sed '/s/^/#/g' $@
+	}
 ## Comment lines from $start to $end
 	comment_lines_from_start_to_end(){
 	sed "$start,$end {s/^/#/}"  $@
@@ -110,6 +114,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 ## Change word to uppercase uppercase if matching pattern
 
+	change_word_matching
 	sed -r "s/\<'$pattern'[a-z]+/\U&/g"   
 
 ## Join two lines if the first ends in a backslash
@@ -217,6 +222,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNTM2NjE3NywtMTQ3MzE2NDExMywtMT
+eyJoaXN0b3J5IjpbLTQxNDQ4MDExMiwtMTQ3MzE2NDExMywtMT
 AxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

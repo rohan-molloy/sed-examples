@@ -148,8 +148,9 @@ Note that the arguments for these functions are additional arguments passed to s
 	}
 
 ## Insert blank line below lines that match pattern
-	insert_linebreak_below_matching_lines()
-	sed '/'$pattern'/G' 
+	insert_linebreak_below_matching_lines(){
+	sed '/'$pattern'/G' $@
+	}
 
 ## Insert blank line above lines that match pattern
 	insert_linebreak_above_matching_lines(){
@@ -165,7 +166,7 @@ Note that the arguments for these functions are additional arguments passed to s
 	sed -n '/^$/{p;h;};/./{x;/./p;}' $@
 	}
 ## Print every nth line starting with x
-
+	print_every
 	sed -n '$n~$xp' 
 
 # Deleting lines 
@@ -228,6 +229,6 @@ Note that the arguments for these functions are additional arguments passed to s
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0OTg1NDg3Nyw1OTQwODE3MTQsLTE0Nz
+eyJoaXN0b3J5IjpbLTY2ODU0ODUxNCw1OTQwODE3MTQsLTE0Nz
 MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

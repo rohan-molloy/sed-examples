@@ -73,13 +73,13 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
 	}
 ## Print lines matching a minimum number characters
-	print_lines_matching_min_characters(){
+	print_lines_min_nchars(){
 	sed -n '/^.\{$nchars\}/p' $@
 	}
 ## Print lines matching a maximum number characters
-
+	print_lines_max_nchars(){
 	sed -n '/^.\{$nchars\}/!p' $@
-
+	}
 ## Print substring of a line after matching a section
 
 	sed -n -e 's/^.*'$word' //p' 
@@ -211,5 +211,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNDAxOTk5MSwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ
+==
 -->

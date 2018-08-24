@@ -37,21 +37,21 @@
 <li><a href="#print-lines-matching-multiple-patterns-in-a-specific-order">Print lines matching multiple patterns in a specific order</a></li>
 <li><a href="#print-lines-matching-a-minimum-number-characters">Print lines matching a minimum number characters</a></li>
 <li><a href="#print-lines-matching-a-maximum-number-characters">Print lines matching a maximum number characters</a></li>
-<li><a href="#print-substring-of-a-line-after-matching-a-section">Print substring of a line after matching a section</a></li>
+<li><a href="#print-the-remainder-of-line-after-matching-pattern">Print the remainder of line after matching pattern</a></li>
+<li><a href="#print-the-word-after-matching-pattern">Print the word after matching pattern</a></li>
 </ul>
 </li>
 <li><a href="#translationrefactoring">Translation/Refactoring</a>
 <ul>
+<li><a href="#comment-all-lines">Comment all lines</a></li>
 <li><a href="#comment-lines-from-start-to-end">Comment lines from $start to $end</a></li>
 <li><a href="#uncomment-lines-from-start-to-end">Uncomment lines from $start to $end</a></li>
 <li><a href="#uncomment-lines-matching-pattern">Uncomment lines matching pattern</a></li>
-<li><a href="#uncomment-lines-matching-pattern-1">Uncomment lines matching pattern</a></li>
-<li><a href="#change-word-to-uppercase-uppercase-if-matching-pattern">Change word to uppercase uppercase if matching pattern</a></li>
+<li><a href="#uncomment-all-lines">Uncomment all lines</a></li>
+<li><a href="#change-word-to-uppercase-if-matching-pattern">Change word to uppercase if matching pattern</a></li>
 <li><a href="#join-two-lines-if-the-first-ends-in-a-backslash">Join two lines if the first ends in a backslash</a></li>
 <li><a href="#remove-characters-in-set-from-lines">Remove characters in set from lines</a></li>
-<li><a href="#remove-html-tags">Remove HTML tags</a></li>
 <li><a href="#insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</a></li>
-<li><a href="#join-a-relative-and-absolute-path">Join a relative and absolute path</a></li>
 </ul>
 </li>
 <li><a href="#paragraphing">Paragraphing</a>
@@ -83,6 +83,8 @@
 <li><a href="#read-lines-from-bottom-to-top-tac">Read lines from bottom-to-top (tac)</a></li>
 <li><a href="#read-lines-from-right-to-left-rev">Read lines from right to left (rev)</a></li>
 <li><a href="#number-lines---delimiting-with-tab">Number lines - delimiting with tab</a></li>
+<li><a href="#remove-html-tags">Remove HTML tags</a></li>
+<li><a href="#join-a-relative-and-absolute-path">Join a relative and absolute path</a></li>
 </ul>
 </li>
 </ul>
@@ -92,132 +94,209 @@
   <div class="stackedit__right">
     <div class="stackedit__html">
       <h1 id="sed-examples">Sed examples</h1>
-<p>A collection based mostly on stackexchange posts along with a few I threw together myself. Later, I will have a <code>.bashrc</code> file that contains a collection of regex patterns</p>
+<p>A collection based mostly on stackexchange posts along with a few I threw together myself. Later, I will have a <code>.bashrc</code> file that contains a collection of regex patterns.</p>
+<p>Note that the arguments for these functions are additional arguments passed to sed. Variables like <code>$pattern</code> <code>$find</code> <code>$replace</code> must be pre-defined.</p>
 <h1 id="find-and-replace">Find and replace</h1>
 <h2 id="find-and-replace-any-match-anywhere-in-the-file">Find and replace any match anywhere in the file</h2>
-<pre><code>sed 's/'$find'/'$replace'/g'
+<pre><code>find_and_replace(){
+sed 's/'$find'/'$replace'/g' $@
+}
 </code></pre>
 <h2 id="find-and-replace-on-lines-containing-pattern">Find and replace on lines containing pattern</h2>
-<pre><code>sed '/'$pattern'/'$find'/'$replace'/g'
+<pre><code>find_and_replace_on_lines() {
+sed '/'$pattern'/'$find'/'$replace'/g' $@
+}
 </code></pre>
 <h2 id="find-and-replace-the-first-match">Find and replace the first match</h2>
-<pre><code>sed 's/'$find'/'$replace'/'
+<pre><code>find_and_replace_first_match(){
+sed 's/'$find'/'$replace'/' $@
+}
 </code></pre>
 <h2 id="find-and-replace-only-on-the-last-match">Find and replace only on the last match</h2>
-<pre><code>sed 's/\(.*\)'$find'/'$replace'/'
+<pre><code>find_and_replace_last_match() {
+sed 's/\(.*\)'$find'/'$replace'/' $@
+}
 </code></pre>
 <h2 id="find-and-replace-inside-a-range-of-lines">Find and replace inside a range of lines</h2>
-<pre><code>sed '$range s/'$find'/'$replace'/g' 
+<pre><code>find_and_replace_inside_range() {
+sed '$range s/'$find'/'$replace'/g' $@
+} 
 </code></pre>
 <h2 id="find-and-replace-outside-a-range-of-lines">Find and replace outside a range of lines</h2>
-<pre><code>sed '$range !s/'$find'/'$replace'/g' 
+<pre><code>find_and_replace_outside_range(){
+sed '$range !s/'$find'/'$replace'/g' $@
+}
 </code></pre>
 <h2 id="find-and-replace-the-nth-instance-in-a-line">Find and replace the nth instance in a line</h2>
-<pre><code>sed 's/'$find'/'$replace'/$nth_instance''
+<pre><code>find_and_replace_nth_instance(){
+sed 's/'$find'/'$replace'/'$nth_instance'' $@
+}
 </code></pre>
 <h2 id="find-and-replace-if-within-matching-start-and-end-pattern">Find and replace if within matching $start and $end pattern</h2>
-<pre><code>sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' 
+<pre><code>find_and_replace_within_start_end(){
+sed -e '/'$start'/,/^'$end'/s/'$find'/'$replace'/g' $@
+}
 </code></pre>
 <h1 id="printing-lines-based-on-pattern">Printing lines based on pattern</h1>
 <h2 id="print-the-line-matching-a-pattern">Print the line matching a pattern</h2>
-<pre><code>sed '/'$pattern'/!d' 
+<pre><code>print_line_matching_pattern(){
+sed '/'$pattern'/!d' $@
+}
 </code></pre>
 <h2 id="print-the-line-immediately-before-pattern">Print the line immediately before pattern</h2>
-<pre><code>sed -n '/'$pattern'/{g;1!p;};h' 
+<pre><code>print_line_preceeding_pattern() {
+sed -n '/'$pattern'/{g;1!p;};h' $@ 
+}
 </code></pre>
 <h2 id="print-the-line-immediately-after-pattern">Print the line immediately after pattern</h2>
-<pre><code>sed -n '/'$pattern'/{n;p;}' 
+<pre><code>print_line_suceeding_pattern(){
+sed -n '/'$pattern'/{n;p;}' 
+}
 </code></pre>
 <h2 id="print-the-line-matching-pattern-and-all-subsequent-lines">Print the line matching pattern and all subsequent lines</h2>
-<pre><code>sed '/'$pattern'/,$!d
+<pre><code>print_line_matching_pattern_and_all_subsequent(){
+sed '/'$pattern'/,$!d' $@
+}
 </code></pre>
 <h2 id="print-lines-matching-a-pattern-and-give-context-and-position">Print lines matching a pattern and give context and position</h2>
-<pre><code>sed -n -e '/'$pattern'/{=;x;1!p;g;$!N;p;D;}'
+<pre><code>print_line_matching_pattern_with_context(){
+sed -n -e '/'$pattern'/{=;x;1!p;g;$!N;p;D;}'
+}
 </code></pre>
 <h2 id="print-lines-matching-multiple-patterns-in-any-order">Print lines matching multiple patterns in any order</h2>
-<pre><code>sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' 
+<pre><code>print_lines_matching_patterns_in_any_order(){
+sed '/'$pattern3'/!d; /'$pattern1'/!d; /'$pattern2'/!d' $@
+}
 </code></pre>
 <h2 id="print-lines-matching-multiple-patterns-in-a-specific-order">Print lines matching multiple patterns in a specific order</h2>
-<pre><code>sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
+<pre><code>print_lines_matching_patterns_in_specific_order(){
+sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' $@
+}
 </code></pre>
 <h2 id="print-lines-matching-a-minimum-number-characters">Print lines matching a minimum number characters</h2>
-<pre><code>sed -n '/^.\{$n\}/p' 
+<pre><code>print_lines_min_nchars(){
+sed -n '/^.\{$nchars\}/p' $@
+}
 </code></pre>
 <h2 id="print-lines-matching-a-maximum-number-characters">Print lines matching a maximum number characters</h2>
-<pre><code>sed -n '/^.\{$n\}/!p' 
+<pre><code>print_lines_max_nchars(){
+sed -n '/^.\{$nchars\}/!p' $@ 
+}
 </code></pre>
-<h2 id="print-substring-of-a-line-after-matching-a-section">Print substring of a line after matching a section</h2>
-<pre><code>sed -n -e 's/^.*'$word' //p' 
+<h2 id="print-the-remainder-of-line-after-matching-pattern">Print the remainder of line after matching pattern</h2>
+<pre><code>print_substring_after_matching_pattern(){
+sed -n -e 's/^.*'$pattern' //p' $@
+}
+</code></pre>
+<h2 id="print-the-word-after-matching-pattern">Print the word after matching pattern</h2>
+<pre><code>print_word_after_matching_pattern(){
+sed -n -e 's/^.*'$pattern' //p' $@
+}
 </code></pre>
 <h1 id="translationrefactoring">Translation/Refactoring</h1>
+<h2 id="comment-all-lines">Comment all lines</h2>
+<pre><code>comment_all_lines(){
+sed '/s/^/#/g' $@
+}
+</code></pre>
 <h2 id="comment-lines-from-start-to-end">Comment lines from $start to $end</h2>
-<pre><code>sed "$start,$end {s/^/#/}"  
+<pre><code>comment_lines_from_start_to_end(){
+sed "$start,$end {s/^/#/}"  $@
+}
 </code></pre>
 <h2 id="uncomment-lines-from-start-to-end">Uncomment lines from $start to $end</h2>
-<pre><code>sed "$start,$end {s/'^#'//}"  
+<pre><code>uncomment_lines_from_start_to_end(){
+sed "$start,$end {s/'^#'//}"  $@
+}
 </code></pre>
 <h2 id="uncomment-lines-matching-pattern">Uncomment lines matching pattern</h2>
-<pre><code>sed '/'$pattern'/s/^/#/g'
+<pre><code>uncomment_lines_matching_pattern(){
+sed '/'$pattern'/s/^/#/g' $@
+}
 </code></pre>
-<h2 id="uncomment-lines-matching-pattern-1">Uncomment lines matching pattern</h2>
-<pre><code>sed '/'$pattern'/s/^#//g' 
+<h2 id="uncomment-all-lines">Uncomment all lines</h2>
+<pre><code>uncomment_all_lines(){
+sed 's/^#//g'  $@
+}
 </code></pre>
-<h2 id="change-word-to-uppercase-uppercase-if-matching-pattern">Change word to uppercase uppercase if matching pattern</h2>
-<pre><code>sed -r "s/\&lt;'$pattern'[a-z]+/\U&amp;/g"   
+<h2 id="change-word-to-uppercase-if-matching-pattern">Change word to uppercase if matching pattern</h2>
+<pre><code>change_word_matching_pattern_to_uppercase(){
+sed -r "s/\&lt;'$pattern'[a-z]+/\U&amp;/g" $@   
+}
 </code></pre>
 <h2 id="join-two-lines-if-the-first-ends-in-a-backslash">Join two lines if the first ends in a backslash</h2>
-<pre><code>sed ':a; /\$/N; s/\\n//; ta'  
+<pre><code>join_two_lines_backslash(){
+sed ':a; /\$/N; s/\\n//; ta'  $@
+}
 </code></pre>
 <h2 id="remove-characters-in-set-from-lines">Remove characters in set from lines</h2>
 <pre><code>set="[0-9]"
 sed 's/'$set'//g' 
 </code></pre>
-<h2 id="remove-html-tags">Remove HTML tags</h2>
-<pre><code>sed -e :a -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba'
-</code></pre>
 <h2 id="insert-strings-before-and-after-to-lines-matching-pattern">Insert strings $before and $after to lines matching pattern</h2>
 <pre><code>sed '/'$pattern'/s@^.*$@'$before'&amp;'$after'@g'
 </code></pre>
-<h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
-<pre><code>sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g'
-</code></pre>
 <h1 id="paragraphing">Paragraphing</h1>
 <h2 id="sort-paragraphs-alphabetically">Sort paragraphs alphabetically</h2>
-<pre><code>(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
+<pre><code>sort_paragraphs_alphabetically(){
+(sed '/./{H;d;};x;s/\n/={NL}=/g'| sort | sed '1s/={NL}=//;s/={NL}=/\n/g')
+}
 </code></pre>
 <h2 id="print-paragraphs-only-if-they-contain-pattern">Print paragraphs only if they contain pattern</h2>
-<pre><code>sed '/./{H;$!d;};x;/'$pattern'/!d'
+<pre><code>print_paragraph_containing_pattern(){
+sed '/./{H;$!d;};x;/'$pattern'/!d' $@
+}
 </code></pre>
 <h2 id="insert-blank-line-below-lines-that-match-pattern">Insert blank line below lines that match pattern</h2>
-<pre><code>sed '/'$pattern'/G' 
+<pre><code>insert_linebreak_below_matching_lines(){
+sed '/'$pattern'/G' $@
+}
 </code></pre>
 <h2 id="insert-blank-line-above-lines-that-match-pattern">Insert blank line above lines that match pattern</h2>
-<pre><code>sed '/'$pattern'/{x;p;x;}'
+<pre><code>insert_linebreak_above_matching_lines(){
+sed '/'$pattern'/{x;p;x;}' $@
+}
 </code></pre>
 <h2 id="insert-blank-line-above-and-below-matching-lines">Insert blank line above and below matching lines</h2>
-<pre><code>sed '/'$pattern'/{x;p;x;G;}'
+<pre><code>insert_linebreak_between_matching_lines(){
+sed '/'$pattern'/{x;p;x;G;}' $@
+}
 </code></pre>
 <h2 id="delete-the-last-line-of-each-paragraph">Delete the last line of each paragraph</h2>
-<pre><code>sed-n '/^$/{p;h;};/./{x;/./p;}'
+<pre><code>delete_last_line_of_each_paragraph(){
+sed -n '/^$/{p;h;};/./{x;/./p;}' $@
+}
 </code></pre>
 <h2 id="print-every-nth-line-starting-with-x">Print every nth line starting with x</h2>
-<pre><code>sed -n '$n~$xp' 
+<pre><code>print_every_nthline_starting_with_linex(){
+sed -n '$nthline~$linexp' $@
+}
 </code></pre>
 <h1 id="deleting-lines">Deleting lines</h1>
 <h2 id="delete-lines-matching-pattern">Delete lines matching pattern</h2>
-<pre><code>sed '/'$pattern'/d' 
+<pre><code>delete_lines_matching_pattern(){
+sed '/'$pattern'/d' $@
+}
 </code></pre>
 <h2 id="delete-all-blank-lines">Delete all blank lines</h2>
-<pre><code>sed '/./!d' 
+<pre><code>delete_all_blank_lines(){
+sed '/./!d' $@
+}
 </code></pre>
 <h2 id="delete-all-blankwhitespace-lines">Delete all blank/whitespace lines</h2>
-<pre><code>sed "/^\s*$/d"
+<pre><code>delete_all_blank_whitespace_lines(){
+sed "/^\s*$/d" $@
+}
 </code></pre>
 <h2 id="delete-all-consecutive-blank-lines-except-for-end">Delete all consecutive blank lines except for end</h2>
-<pre><code>sed '/./,/^$/!d' 
+<pre><code>delete_all_consecutive_blank_lines_except_end(){
+sed '/./,/^$/!d' $@
+}
 </code></pre>
 <h2 id="delete-all-consecutive-blank-lines-except-start">Delete all consecutive blank lines except start</h2>
-<pre><code>sed '/^$/N;/\n$/D' 
+<pre><code>delete_all_consecutive_blank_lines_except_start(){
+sed '/^$/N;/\n$/D' $@
+}
 </code></pre>
 <h2 id="delete-all-consecutive-blank-lines-except-for-the-first-two">Delete all consecutive blank lines except for the first two</h2>
 <pre><code>sed '/^$/N;/\n$/N;//D' 
@@ -233,13 +312,29 @@ sed 's/'$set'//g'
 </code></pre>
 <h1 id="miscellaneous">Miscellaneous</h1>
 <h2 id="read-lines-from-bottom-to-top-tac">Read lines from bottom-to-top (tac)</h2>
-<pre><code>sed '1!G;h;$!d' 
+<pre><code>read_lines_bottom_to_top(){
+sed '1!G;h;$!d' $@
+}
 </code></pre>
 <h2 id="read-lines-from-right-to-left-rev">Read lines from right to left (rev)</h2>
-<pre><code>sed '/\n/!G;s/\(.\)\(.*\n\)/&amp;/;//D;s/.//'
+<pre><code>read_lines_right_to_left(){
+sed '/\n/!G;s/\(.\)\(.*\n\)/&amp;/;//D;s/.//' $@
+}
 </code></pre>
 <h2 id="number-lines---delimiting-with-tab">Number lines - delimiting with tab</h2>
-<pre><code>sed = \ | sed 'N;s/\n/\t/') 
+<pre><code>number_lines_tab_delimited(){
+sed = $@ | sed 'N;s/\n/\t/' $@
+</code></pre>
+<p>}</p>
+<h2 id="remove-html-tags">Remove HTML tags</h2>
+<pre><code>remove_html_tags(){
+sed -e :a -e 's/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba' $@
+}
+</code></pre>
+<h2 id="join-a-relative-and-absolute-path">Join a relative and absolute path</h2>
+<pre><code>join_pathAbsolute_with_pathRelative(){
+sed 's@'$pathAbsolute'@&amp;'/$pathRelative'@g' $@
+}
 </code></pre>
 
     </div>

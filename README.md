@@ -166,23 +166,23 @@ Note that the arguments for these functions are additional arguments passed to s
 	sed -n '/^$/{p;h;};/./{x;/./p;}' $@
 	}
 ## Print every nth line starting with x
-	print_every
-	sed -n '$n~$xp' 
-
+	print_every_nthline_starting_with_linex(){
+	sed -n '$nthline~$linexp' $@
+	}
 # Deleting lines 
 
 ## Delete lines matching pattern
-	
-	sed '/'$pattern'/d' 
-
+	delete_lines_matching_pattern(){
+	sed '/'$pattern'/d' $@
+	}
 ## Delete all blank lines
-
-	sed '/./!d' 
-
+	delete_all_blank_lines(){
+	sed '/./!d' $@
+	}
 ## Delete all blank/whitespace lines
-
-	sed "/^\s*$/d"
-
+	delete_all_blank_whitespace_lines(){
+	sed "/^\s*$/d" $@
+	}
 ## Delete all consecutive blank lines except for end
 
 	sed '/./,/^$/!d' 
@@ -229,6 +229,6 @@ Note that the arguments for these functions are additional arguments passed to s
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2ODU0ODUxNCw1OTQwODE3MTQsLTE0Nz
+eyJoaXN0b3J5IjpbMTA0OTcyMDQyNiw1OTQwODE3MTQsLTE0Nz
 MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
 -->

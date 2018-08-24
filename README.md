@@ -70,7 +70,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Print lines matching multiple patterns in a specific order
 	print_lines_matching_patterns_in_specific_order(){
-	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' 
+	sed '/'$pattern1'.*'$pattern2'.*'$pattern3'/!d' $@
 	}
 ## Print lines matching a minimum number characters
 	print_lines_min_nchars(){
@@ -78,7 +78,7 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Print lines matching a maximum number characters
 	print_lines_max_nchars(){
-	sed -n '/^.\{$nchars\}/!p' $@
+	sed -n '/^.\{$nchars\}/!p' $@ 
 	}
 ## Print the remainder of line after matching pattern
 
@@ -86,7 +86,8 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed -n -e 's/^.*'$pattern' //p' $@
 	}
 ## Print the word after matching pattern
-	print_word_after_
+	print_word_after_matching_pattern(){
+	}
 # Translation/Refactoring
 
 ## Comment lines from $start to $end
@@ -214,6 +215,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzNzM3NzgyNCwtMTAxMjE3ODU1NSwtMT
-Y5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTE0NzMxNjQxMTMsLTEwMTIxNzg1NTUsLT
+E2OTk3NTE0NDVdfQ==
 -->

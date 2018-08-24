@@ -212,27 +212,28 @@ Note that the arguments for these functions are additional arguments passed to s
 # Miscellaneous 
 
 ## Read lines from bottom-to-top (tac)
-
-	sed '1!G;h;$!d' 
-
+	read_lines_bottom_to_top(){
+	sed '1!G;h;$!d' $@
+	}
 ## Read lines from right to left (rev)
-
-	sed '/\n/!G;s/\(.\)\(.*\n\)/&/;//D;s/.//'
-
+	read_lines_right_to_left(){
+	sed '/\n/!G;s/\(.\)\(.*\n\)/&/;//D;s/.//' $@
+	}
 ## Number lines - delimiting with tab
 
-
-	sed = $@ | sed 'N;s/\n/\t/'
-
+	number_lines_tab_delimited(){
+	sed = $@ | sed 'N;s/\n/\t/' $@
+}
 
 ## Remove HTML tags
 	remove_html_tags(){
 	sed -e :a -e 's/<[^>]*>//g;/</N;//ba' $@
 	}
 ## Join a relative and absolute path
-
-	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
+	join_pathAbsolute_with_pathRelative(){
+	sed 's@'$pathAbsolute'@&'/$pathRelative'@g' $@
+	}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDUxMjUxNDQsNTk0MDgxNzE0LC0xND
-czMTY0MTEzLC0xMDEyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
+eyJoaXN0b3J5IjpbMTQ3NjM2Mjk0LDU5NDA4MTcxNCwtMTQ3Mz
+E2NDExMywtMTAxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->

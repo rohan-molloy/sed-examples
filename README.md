@@ -49,15 +49,15 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	sed '/'$pattern'/!d' $@
 	}
 ## Print the line immediately before pattern
-	print_line_before_pattern() {
+	print_line_preceeding_pattern() {
 	sed -n '/'$pattern'/{g;1!p;};h' $@ 
 	}
 ## Print the line immediately after pattern
-
+	print_line_suceeding_pattern(){
 	sed -n '/'$pattern'/{n;p;}' 
-
+	}
 ## Print the line matching pattern and all subsequent lines
-
+	print_line
 	sed '/'$pattern'/,$!d
 
 ## Print lines matching a pattern and give context and position
@@ -211,5 +211,5 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNDk2MDA3NiwtMTY5OTc1MTQ0NV19
+eyJoaXN0b3J5IjpbLTYyMTc5NDQ3MSwtMTY5OTc1MTQ0NV19
 -->

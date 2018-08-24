@@ -221,7 +221,9 @@ Note that the arguments for these functions are additional arguments passed to s
 
 ## Number lines - delimiting with tab
 
-	sed = \ | sed 'N;s/\n/\t/') 
+
+	sed = $@ | sed 'N;s/\n/\t/'
+
 
 ## Remove HTML tags
 	remove_html_tags(){
@@ -231,6 +233,6 @@ Note that the arguments for these functions are additional arguments passed to s
 
 	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NTIyMTA5OSw1OTQwODE3MTQsLTE0Nz
-MxNjQxMTMsLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbLTEyMDUxMjUxNDQsNTk0MDgxNzE0LC0xND
+czMTY0MTEzLC0xMDEyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
 -->

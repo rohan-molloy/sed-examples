@@ -80,8 +80,9 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	print_lines_max_nchars(){
 	sed -n '/^.\{$nchars\}/!p' $@
 	}
-## Print substring of a line after matching a section
+## Print remainder of a line after matching substring
 
+	print_remainder_of_line_after_ma
 	sed -n -e 's/^.*'$word' //p' 
 
 # Translation/Refactoring
@@ -211,6 +212,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ
-==
+eyJoaXN0b3J5IjpbMTkyMTc0MzY2LC0xMDEyMTc4NTU1LC0xNj
+k5NzUxNDQ1XX0=
 -->

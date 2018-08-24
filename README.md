@@ -87,21 +87,23 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	}
 ## Print the word after matching pattern
 	print_word_after_matching_pattern(){
+	sed -n -e 's/^.*'$pattern' //p' $@
 	}
 # Translation/Refactoring
 
 ## Comment lines from $start to $end
-
-	sed "$start,$end {s/^/#/}"  
+	comment_lines_from_start_to_end(){
+	sed "$start,$end {s/^/#/}"  $@
+	}
 
 ## Uncomment lines from $start to $end
-
-	sed "$start,$end {s/'^#'//}"  
-
+	uncomment_lines_from_start_to_end(){
+	sed "$start,$end {s/'^#'//}"  $@
+	}
 ## Uncomment lines matching pattern 
-
+	uncomment_lines_matching_pattern(){
 	sed '/'$pattern'/s/^/#/g'
-
+	}
 ## Uncomment lines matching pattern 
 
 	sed '/'$pattern'/s/^#//g' 
@@ -215,6 +217,6 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzMxNjQxMTMsLTEwMTIxNzg1NTUsLT
-E2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbMzA2NzMxNzUxLC0xNDczMTY0MTEzLC0xMD
+EyMTc4NTU1LC0xNjk5NzUxNDQ1XX0=
 -->

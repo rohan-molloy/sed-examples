@@ -126,17 +126,12 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 	set="[0-9]"
 	sed 's/'$set'//g' 
 
-## Remove HTML tags
 
-	sed -e :a -e 's/<[^>]*>//g;/</N;//ba'
-	
 ## Insert strings $before and $after to lines matching pattern
 
 	sed '/'$pattern'/s@^.*$@'$before'&'$after'@g'
 
-## Join a relative and absolute path
 
-	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 
 # Paragraphing
 
@@ -220,8 +215,14 @@ A collection based mostly on stackexchange posts along with a few I threw togeth
 
 	sed = \ | sed 'N;s/\n/\t/') 
 
+## Remove HTML tags
+	remove_html_tags(){
+	sed -e :a -e 's/<[^>]*>//g;/</N;//ba' $@
+	}
+## Join a relative and absolute path
 
+	sed 's@'$pathAbsolute'@&'/$pathRelative'@g'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQ4NDk0MjIsLTE0NzMxNjQxMTMsLT
-EwMTIxNzg1NTUsLTE2OTk3NTE0NDVdfQ==
+eyJoaXN0b3J5IjpbLTIxNzE3ODIzNywtMTQ3MzE2NDExMywtMT
+AxMjE3ODU1NSwtMTY5OTc1MTQ0NV19
 -->
